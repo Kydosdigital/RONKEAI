@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RONKE AI - Every Elderly Patient Deserves to Be Cherished</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-coral: #E85D75;
+            --secondary-gold: #F4C790;
+            --accent-peach: #FFB3BA;
+            --nhs-blue: #005EB8;
+            --dark-text: #333333;
+            --light-bg: #FAFAFA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFF9E6 100%);
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(10deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .pre-headline {
+            font-style: italic;
+            color: var(--secondary-gold);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-coral), var(--nhs-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--dark-text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-coral), #d94863);
+            color: white;
+            box-shadow: 0 10px 30px rgba(232, 93, 117, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 93, 117, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-coral);
+            border: 2px solid var(--primary-coral);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-coral);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        /* Wave Animation Section */
+        .wave-section {
+            position: relative;
+            background: white;
+            padding: 6rem 5%;
+        }
+
+        .wave-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 150px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23FFF5F7"/></svg>');
+            background-size: 50% 100%;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            padding: 6rem 5%;
+            background: white;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #FFF5F7, #FFF9E6);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-gold));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-coral);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--light-bg), white);
+            position: relative;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 4rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .step:nth-child(even) {
+            direction: rtl;
+        }
+
+        .step:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .step-content {
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent-peach);
+            opacity: 0.3;
+            position: absolute;
+            top: -3rem;
+            left: -1rem;
+            z-index: 0;
+        }
+
+        .step-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            color: var(--primary-coral);
+        }
+
+        .step-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-visual {
+            background: linear-gradient(135deg, #FFF5F7, #FFF9E6);
+            padding: 3rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .step-icon {
+            font-size: 8rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Voice First Section */
+        .voice-first {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary-coral), #d94863);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-first::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .voice-quote {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 2rem;
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary-coral), var(--secondary-gold));
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: linear-gradient(135deg, #FFF5F7, #FFF9E6);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--primary-coral);
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(232, 93, 117, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .phase-title {
+            font-size: 1.8rem;
+            color: var(--primary-coral);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .phase-description {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* NHS Trust Section */
+        .nhs-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--nhs-blue), #004494);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nhs-section::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .benefits-showcase {
+            max-width: 1200px;
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-column {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-column:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+        }
+
+        .benefit-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .benefit-column ul {
+            list-style: none;
+        }
+
+        .benefit-column li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .benefit-column li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-gold);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .pilot-highlight {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            background: rgba(255,255,255,0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            color: var(--dark-text);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pilot-highlight h3 {
+            font-size: 2rem;
+            color: var(--nhs-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #FFF9E6, #FFF5F7);
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .name-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .name-part {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .name-part:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .yoruba-word {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .english-meaning {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+        }
+
+        .story-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-top: 3rem;
+            color: var(--dark-text);
+        }
+
+        .story-highlight {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-coral);
+            margin: 2rem 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-photo {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .team-role {
+            font-size: 1.1rem;
+            color: var(--primary-coral);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            font-size: 1rem;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-gold));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-item {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--secondary-gold);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--secondary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: var(--secondary-gold);
+            margin-top: 1rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+            }
+
+            .step:nth-child(even) {
+                direction: ltr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#E85D75;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFB3BA;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50,85 C25,60 10,45 10,30 C10,15 20,10 30,15 C35,17 40,22 50,30 C60,22 65,17 70,15 C80,10 90,15 90,30 C90,45 75,60 50,85 Z" fill="url(#heartGradient)"/>
+                    <circle cx="75" cy="45" r="3" fill="#E85D75">
+                        <animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="80" cy="50" r="2" fill="#E85D75">
+                        <animate attributeName="r" values="2;4;2" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="85" cy="55" r="2" fill="#E85D75">
+                        <animate attributeName="r" values="2;3;2" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+                <div class="logo-text">RONKE AI</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#voice">Why Voice?</a></li>
+                <li><a href="#nhs">For NHS Trusts</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <i class="fas fa-heart floating-heart" style="top: 10%; left: 10%; font-size: 3rem; color: rgba(232, 93, 117, 0.15);"></i>
+            <i class="fas fa-heart floating-heart" style="top: 70%; right: 15%; font-size: 2rem; animation-delay: 5s; color: rgba(232, 93, 117, 0.15);"></i>
+            <i class="fas fa-heart floating-heart" style="top: 40%; right: 5%; font-size: 2.5rem; animation-delay: 10s; color: rgba(232, 93, 117, 0.15);"></i>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="pre-headline">Adéronkẹ́ (ah-day-ron-keh) - "The crown has found someone to cherish"</p>
+                <h1>Every Elderly Patient Deserves to Be Cherished</h1>
+                <p>Like the Yoruba name that inspired us, RONKE believes every person is precious and deserving of special care. Our AI voice calls ensure elderly heart failure patients are never forgotten after leaving hospital.</p>
+                <div class="cta-buttons">
+                    <a href="#nhs" class="btn btn-primary">NHS Trusts: Cherish Your Patients</a>
+                    <a href="#about" class="btn btn-secondary">Learn Our Story</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/800x600/FFF5F7/E85D75?text=Elderly+Woman+on+Phone&font=roboto" 
+                     alt="Elderly woman smiling while talking on phone at home" 
+                     style="width: 100%; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-section">
+        <div class="wave-container">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Challenge Section -->
+    <section class="challenge-section fade-in">
+        <div class="section-header">
+            <h2>The Patients Digital Health Forgot</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-chart-line" style="color: var(--primary-coral);"></i></div>
+                <div class="stat-number">18-21%</div>
+                <p class="stat-label">of heart failure patients are readmitted within 30 days</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-clock" style="color: var(--primary-coral);"></i></div>
+                <div class="stat-number">Age 81</div>
+                <p class="stat-label">Median age - most cannot use smartphone health apps</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-pound-sign" style="color: var(--primary-coral);"></i></div>
+                <div class="stat-number">£6bn+</div>
+                <p class="stat-label">NHS spends annually managing heart failure</p>
+            </div>
+        </div>
+        <div style="max-width: 800px; margin: 4rem auto 0; text-align: center; font-size: 1.3rem; line-height: 1.8;">
+            While digital health apps serve younger populations, elderly patients—the highest-risk group for readmissions—are left behind. They deserve better. <strong style="color: var(--primary-coral);">They deserve to be cherished.</strong>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works fade-in">
+        <div class="section-header">
+            <h2>Simple. Compassionate. Effective.</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 1rem auto 0;">RONKE uses the technology elderly patients already know: the telephone.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title"><i class="fas fa-phone-volume"></i> Regular Check-In Calls</h3>
+                    <p class="step-description">After hospital discharge, RONKE calls patients regularly to check on their recovery. Simple, friendly questions about how they're feeling—no buttons to press, no apps to download.</p>
+                </div>
+                <div class="step-visual">
+                    <i class="fas fa-phone-volume step-icon" style="color: var(--primary-coral);"></i>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title"><i class="fas fa-brain"></i> AI-Powered Care Intelligence</h3>
+                    <p class="step-description">Our proprietary conversation analysis identifies early warning signs that a patient may be deteriorating. Clinically validated questions detect symptoms before they become emergencies.</p>
+                </div>
+                <div class="step-visual">
+                    <i class="fas fa-brain step-icon" style="color: var(--primary-coral);"></i>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title"><i class="fas fa-user-nurse"></i> Clinical Team Alerts</h3>
+                    <p class="step-description">Nurses and clinicians access a dashboard showing which patients need urgent follow-up. Early intervention prevents crisis and saves lives.</p>
+                </div>
+                <div class="step-visual">
+                    <i class="fas fa-user-nurse step-icon" style="color: var(--primary-coral);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice First Section -->
+    <section class="voice-first fade-in" id="voice">
+        <div class="section-header" style="color: white;">
+            <h2>Because Your Grandmother Deserves Healthcare Too</h2>
+        </div>
+        <div class="voice-quote">
+            "My grandmother can't work a smartphone, but she answers every phone call. That's who we built RONKE for."
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3 class="benefit-title">No App to Download</h3>
+                <p class="benefit-text">Works on any phone—landline or mobile. No smartphone needed.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-eye-slash"></i></div>
+                <h3 class="benefit-title">No Screens to Read</h3>
+                <p class="benefit-text">Natural conversation. No tiny text, no confusing menus, no buttons.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3 class="benefit-title">No Digital Skills Required</h3>
+                <p class="benefit-text">If they can answer a phone, they can use RONKE. It's that simple.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                <h3 class="benefit-title">No One Left Behind</h3>
+                <p class="benefit-text">Reaches the 75+ patients who are excluded from every other digital health solution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section fade-in">
+        <div class="section-header">
+            <h2>Solving Readmissions One Condition at a Time</h2>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 1rem auto 0;">RONKE is on a mission to ensure no elderly patient is left behind.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">Phase 1: Heart Failure (2026)</h3>
+                    <p class="phase-description">Prove the model works. Clinical validation with NHS trust partners across England.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">Phase 2: COPD & Respiratory (2027)</h3>
+                    <p class="phase-description">Expand to breathing conditions with similar symptom patterns and patient demographics.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="phase-title">Phase 3: Comprehensive Care (2028+)</h3>
+                    <p class="phase-description">Diabetes, stroke recovery, frailty—voice-first monitoring for all elderly patients.</p>
+                </div>
+            </div>
+        </div>
+        <div style="max-width: 900px; margin: 4rem auto 0; text-align: center; font-size: 1.3rem; line-height: 1.8;">
+            We're not just building a heart failure solution. We're building the platform that makes voice-first monitoring the <strong style="color: var(--primary-coral);">NHS standard for all post-discharge elderly care.</strong>
+        </div>
+    </section>
+
+    <!-- NHS Trust Section -->
+    <section class="nhs-section fade-in" id="nhs">
+        <div class="section-header" style="color: white;">
+            <h2>Partner With RONKE: Cherish Your Patients at Scale</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 1rem auto 0;">Join our clinical validation pilot and transform post-discharge care.</p>
+        </div>
+        <div class="benefits-showcase">
+            <div class="benefit-column">
+                <h3><i class="fas fa-hospital"></i> Clinical Impact</h3>
+                <ul>
+                    <li>Target 15-25% reduction in readmissions</li>
+                    <li>Early detection of deteriorating patients</li>
+                    <li>Better outcomes and quality of life</li>
+                    <li>Evidence-based care pathways</li>
+                </ul>
+            </div>
+            <div class="benefit-column">
+                <h3><i class="fas fa-chart-line"></i> Financial Benefits</h3>
+                <ul>
+                    <li>Significant annual cost savings</li>
+                    <li>Reduced emergency readmissions</li>
+                    <li>Freed hospital beds for urgent care</li>
+                    <li>Cost-effective vs. standard care</li>
+                </ul>
+            </div>
+            <div class="benefit-column">
+                <h3><i class="fas fa-cogs"></i> Operational Excellence</h3>
+                <ul>
+                    <li>Integrates seamlessly with NHS systems</li>
+                    <li>Supports your clinical teams</li>
+                    <li>Simple implementation and training</li>
+                    <li>Full pilot support from RONKE</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pilot-highlight">
+            <h3><i class="fas fa-bullseye"></i> NHS Trust Pilot Programme Now Open</h3>
+            <p style="margin: 2rem 0; font-size: 1.2rem; line-height: 1.8;">We're seeking 3-5 NHS trust partners for clinical validation pilots.</p>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto 2rem;">
+                <p style="margin-bottom: 1rem;"><strong>What's Included:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-coral); font-weight: 700;">✓</span>
+                        Grant-funded programme (no cost to your trust)
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-coral); font-weight: 700;">✓</span>
+                        Full technical setup and integration
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-coral); font-weight: 700;">✓</span>
+                        Clinical team training and support
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-coral); font-weight: 700;">✓</span>
+                        Comprehensive outcome measurement
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-coral); font-weight: 700;">✓</span>
+                        Academic research partnership
+                    </li>
+                </ul>
+            </div>
+            <p style="font-weight: 600; margin-bottom: 2rem;"><strong>Timeline:</strong> Pilot launch Q2 2026</p>
+            <a href="#contact" class="btn btn-primary">Express Interest in Pilot Programme</a>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section fade-in" id="about">
+        <div class="section-header">
+            <h2>Why We're Called RONKE</h2>
+        </div>
+        <div class="story-content">
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; line-height: 1.8;"><strong>Adéronkẹ́</strong> is a Yoruba name meaning <em style="color: var(--primary-coral);">"the crown has found someone to cherish"</em></p>
+            <div class="name-breakdown">
+                <div class="name-part">
+                    <div class="yoruba-word">Ade</div>
+                    <div class="english-meaning">Crown • Royalty, honour, high value</div>
+                </div>
+                <div class="name-part">
+                    <div class="yoruba-word">Rí</div>
+                    <div class="english-meaning">Found • To discover someone precious</div>
+                </div>
+                <div class="name-part">
+                    <div class="yoruba-word">Oun</div>
+                    <div class="english-meaning">Someone • A person of value</div>
+                </div>
+                <div class="name-part">
+                    <div class="yoruba-word">Kẹ́</div>
+                    <div class="english-meaning">Cherish • To care for with tenderness</div>
+                </div>
+            </div>
+            <div class="story-text">
+                <p>Our founder chose this name because <span class="story-highlight">elderly patients deserve to be cherished like royalty.</span></p>
+                <p style="margin-top: 2rem;">While digital health apps forget them, RONKE finds them and cares for them—ensuring no one is left behind after hospital discharge.</p>
+                <p style="margin-top: 2rem; font-size: 1.6rem; font-weight: 600; color: var(--primary-coral);">Every patient is precious.<br>Every patient deserves the crown's care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section fade-in">
+        <div class="section-header">
+            <h2>A Team United by Mission</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 1rem auto 0;">Expert skills. Compassionate hearts. One goal: ensure no elderly patient is forgotten.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo"><i class="fas fa-user-tie"></i></div>
+                <h3 class="team-name">Jesuloba Stephen Owojori</h3>
+                <p class="team-role">Founder & CEO</p>
+                <p class="team-bio">Healthcare innovation & NHS partnerships. 10+ years AI automation expertise.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo"><i class="fas fa-user-md"></i></div>
+                <h3 class="team-name">Dr. Reyhane Moradihaghighat</h3>
+                <p class="team-role">Co-Founder & CTO</p>
+                <p class="team-bio">PhD in AI in Medicine. Heart disease & clinical AI specialist.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo"><i class="fas fa-laptop-code"></i></div>
+                <h3 class="team-name">Ayokunmi Adejimiroye</h3>
+                <p class="team-role">Product Owner</p>
+                <p class="team-bio">Product strategy & agile delivery. NHS workflow optimization.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-photo"><i class="fas fa-chart-bar"></i></div>
+                <h3 class="team-name">Precious Odusola</h3>
+                <p class="team-role">Business Analyst</p>
+                <p class="team-bio">Requirements & process analysis. NHS system integration expert.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section fade-in" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Cherish Your Patients?</h2>
+            <p>Partner with RONKE to transform post-discharge care at your NHS trust.</p>
+            <div class="cta-buttons">
+                <a href="mailto:partner@ronke.ai" class="btn" style="background: white; color: var(--primary-coral);">Express Interest in Partnership</a>
+                <a href="mailto:research@ronke.ai" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Discuss Research Partnership</a>
+            </div>
+            <div class="contact-info">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Let's Talk</h3>
+                <p class="contact-item"><i class="fas fa-envelope"></i> Email: partner@ronke.ai</p>
+                <p class="contact-item"><i class="fas fa-map-marker-alt"></i> Location: Manchester, United Kingdom</p>
+                <p style="margin-top: 1.5rem; opacity: 0.9;"><strong>Response time:</strong> Within 24 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#">Careers (coming soon)</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>For NHS Trusts</h4>
+                <ul>
+                    <li><a href="#nhs">Pilot Programme</a></li>
+                    <li><a href="#nhs">Partnership Benefits</a></li>
+                    <li><a href="#contact">Request Information</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog (coming soon)</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 RONKE AI Ltd. All rights reserved.</p>
+            <p class="footer-tagline">Adéronkẹ́: "The crown has found someone to cherish"</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Number animation for stats
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Trigger stat animations when visible
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && statNumber.textContent.includes('%')) {
+                        statNumber.dataset.suffix = '%';
+                        animateValue(statNumber, 0, parseInt(statNumber.textContent), 2000);
+                        entry.target.dataset.animated = 'true';
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card').forEach(card => statObserver.observe(card));
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-heart');
+            parallax.forEach((el, index) => {
+                const speed = 0.3 + (index * 0.1);
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
